@@ -15,6 +15,19 @@ object StringUtils {
 
   }
 
+  implicit class StringBoolean(val s: String) extends AnyVal {
+
+    // safe boolean conversion
+    def toBooleanSafe: Boolean = {
+      if ("true".equals(s)) {
+        true
+      } else {
+        false
+      }
+    }
+
+  }
+
   val slash = "/"
 
 }
