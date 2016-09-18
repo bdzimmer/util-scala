@@ -15,7 +15,9 @@ object StringUtils {
 
   }
 
-  implicit class StringBoolean(val s: String) extends AnyVal {
+  implicit class StringConvertSafe(val s: String) extends AnyVal {
+
+    import scala.util.Try
 
     // safe boolean conversion
     def toBooleanSafe: Boolean = {
@@ -26,7 +28,13 @@ object StringUtils {
       }
     }
 
+    // safe integer conversion
+    def toIntSafe(default: Int = 0): Int = {
+      Try(s.toInt).getOrElse(default)
+    }
+
   }
+
 
   val slash = "/"
 
