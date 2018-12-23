@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
     javacOptions ++= Seq("-source", jvmSettings.javacSource, "-target", jvmSettings.javacTarget),
     scalacOptions ++= Seq(s"-target:jvm-${jvmSettings.scalacTarget}"),
 
-    libraryDependencies ++= Seq("org.scalatest" %% "scalatest" % "2.2.4" % "it,test"),
+    libraryDependencies ++= Seq("org.scalatest" %% "scalatest" % "2.2.4"),
 
     unmanagedSourceDirectories in Compile <<= (scalaSource in Compile)(Seq(_)),
     unmanagedSourceDirectories in Test <<= (scalaSource in Test)(Seq(_)))
