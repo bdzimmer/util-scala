@@ -6,6 +6,8 @@ package bdzimmer.util
 
 object StringUtils {
 
+  val slash = "/"
+
   implicit class StringPath(val s: String) extends AnyVal {
 
     // method for joining path segments
@@ -33,9 +35,11 @@ object StringUtils {
       Try(s.toInt).getOrElse(default)
     }
 
+    // safe double conversion
+    def toDoubleSafe(default: Double = 0.0): Double = {
+      Try(s.toDouble).getOrElse(default)
+    }
+
   }
-
-
-  val slash = "/"
 
 }
