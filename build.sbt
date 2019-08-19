@@ -2,11 +2,7 @@
 
 // util-scala project build.sbt file
 
-val whichJvmSettings = sys.props.getOrElse("jvm", default = "7")
-val jvmSettings = whichJvmSettings match {
-  case "6" => JvmSettings("1.6", "1.6", "1.6")
-  case _ => JvmSettings("1.7", "1.7", "1.7")
-}
+val jvmSettings = JvmSettings("1.8", "1.8", "1.8")
 
 lazy val root = (project in file("."))
   .settings(
@@ -16,7 +12,7 @@ lazy val root = (project in file("."))
     scalaVersion := "2.10.6",
 
     javacOptions ++= Seq("-source", jvmSettings.javacSource, "-target", jvmSettings.javacTarget),
-    scalacOptions ++= Seq(s"-target:jvm-${jvmSettings.scalacTarget}"),
+    scalacOptions ++= Seq(s"-target:jvm-1.7"),
 
     libraryDependencies ++= Seq("org.scalatest" %% "scalatest" % "2.2.4"),
 
@@ -28,8 +24,8 @@ lazy val root = (project in file("."))
 // import into Eclipse as a Scala project
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Scala
 
-// use Java 1.7 in Eclipse
-EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE17)
+// use Java 1.8 in Eclipse
+EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE18)
 
 // use the version of Scala from sbt in Eclipse
 EclipseKeys.withBundledScalaContainers := false
